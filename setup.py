@@ -15,7 +15,7 @@ def setup():
     base_dir = Path.cwd()
     
     # Create directories
-    directories = ['Tasks', 'CRM', 'examples']
+    directories = ['Tasks', 'CRM', 'Knowledge', 'examples']
     for dir_name in directories:
         dir_path = base_dir / dir_name
         if not dir_path.exists():
