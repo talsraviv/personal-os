@@ -55,6 +55,61 @@ def setup():
     else:
         print("📁 File exists: BACKLOG.md")
     
+    # Create GOALS.md with user input
+    goals_path = base_dir / 'GOALS.md'
+    if not goals_path.exists():
+        print("\n🎯 Let's define your goals and design your ideal life...")
+        print("Take a moment to think about what really matters to you.\n")
+        
+        # Professional goals
+        print("1. PROFESSIONAL: What does career success look like for you in 12 months?")
+        print("   (e.g., role, skills, income, impact, autonomy)")
+        professional = input("   → ").strip()
+        
+        # Personal/Life goals
+        print("\n2. PERSONAL: What would make your life feel rich and fulfilling?")
+        print("   (e.g., relationships, health, hobbies, experiences, learning)")
+        personal = input("   → ").strip()
+        
+        # Current focus
+        print("\n3. NEXT 90 DAYS: What 1-3 things would create the most momentum?")
+        print("   (Be specific - what will you ship, launch, or complete?)")
+        focus = input("   → ").strip()
+        
+        goals_content = f"""# Goals & Life Design
+
+## 12-Month Vision
+
+### Professional
+{professional if professional else '[What does career success look like?]'}
+
+### Personal
+{personal if personal else '[What makes life rich and fulfilling?]'}
+
+## Next 90 Days - Focus Areas
+{focus if focus else '[What 1-3 things create the most momentum?]'}
+
+## Weekly Review Questions
+- What moved me closer to my vision this week?
+- What held me back?
+- What needs to change next week?
+
+## Decision Filter
+Before taking on new commitments, ask:
+- Does this align with my 12-month vision?
+- Is this in my zone of genius?
+- What would I need to say no to?
+
+## Notes
+- Review monthly and adjust course
+- Dreams without deadlines are just wishes
+- Progress > Perfection
+"""
+        goals_path.write_text(goals_content)
+        print("\n✅ Created: GOALS.md with your life design")
+    else:
+        print("📁 File exists: GOALS.md")
+    
     # Create example files
     example_task = base_dir / 'examples' / 'example_task.md'
     if not example_task.exists():
