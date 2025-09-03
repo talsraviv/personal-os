@@ -28,7 +28,8 @@ def setup():
     templates = {
         'core/templates/CLAUDE.md': 'CLAUDE.md',
         'core/templates/config.yaml': 'config.yaml',
-        'core/templates/gitignore': '.gitignore'
+        'core/templates/gitignore': '.gitignore',
+        'core/templates/GOALS.md': 'GOALS.md'
     }
     
     for source, dest in templates.items():
@@ -46,6 +47,45 @@ def setup():
             print(f"✅ Copied: {source} → {dest}")
         else:
             print(f"❌ Template not found: {source}")
+    
+    # Interactive GOALS setup
+    goals_path = base_dir / 'GOALS.md'
+    if goals_path.exists() and (goals_path.read_text().count('[') > 5):
+        print("📁 GOALS.md exists with content")
+    else:
+        print("\n📋 Let's set up your goals and priorities...")
+        print("(Press Enter to skip any question)\n")
+        
+        role = input("What's your current role? (e.g., Senior PM, Engineering Manager): ").strip()
+        objective1 = input("What's your #1 objective this quarter? ").strip()
+        objective2 = input("What's your #2 objective this quarter? ").strip()
+        objective3 = input("What's your #3 objective this quarter? ").strip()
+        
+        # Update GOALS.md with user input if provided
+        if any([role, objective1, objective2, objective3]):
+            with open(goals_path, 'r') as f:
+                goals_content = f.read()
+            
+            if role:
+                goals_content = goals_content.replace(
+                    "[Your current position and key responsibilities]",
+                    role
+                )
+            
+            objectives = [obj for obj in [objective1, objective2, objective3] if obj]
+            if objectives:
+                obj_text = "\n".join([f"{i+1}. {obj}" for i, obj in enumerate(objectives)])
+                goals_content = goals_content.replace(
+                    "1. [Objective 1]\n2. [Objective 2]  \n3. [Objective 3]",
+                    obj_text
+                )
+            
+            with open(goals_path, 'w') as f:
+                f.write(goals_content)
+            
+            print("✅ Updated GOALS.md with your input")
+        else:
+            print("⏭️  Skipped goals setup - you can edit GOALS.md later")
     
     # Create BACKLOG.md if it doesn't exist
     backlog_path = base_dir / 'BACKLOG.md'
@@ -137,10 +177,11 @@ Add any additional context here.
     
     print("\n✨ Setup complete!")
     print("\nNext steps:")
-    print("1. Edit CLAUDE.md to customize your AI instructions")
-    print("2. Edit config.yaml to set your categories and priorities")
-    print("3. Start the MCP server: python core/mcp/server.py")
-    print("4. Tell your AI: 'Read CLAUDE.md for task management'")
+    print("1. Review GOALS.md to refine your objectives")
+    print("2. Edit CLAUDE.md to customize your AI instructions")
+    print("3. Edit config.yaml to set your categories and priorities")
+    print("4. Start the MCP server: python manager_ai_mcp/server.py")
+    print("5. Tell your AI: 'Read CLAUDE.md for task management'")
     print("\nHappy task managing! 🎯")
 
 if __name__ == "__main__":
