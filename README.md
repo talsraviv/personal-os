@@ -1,4 +1,4 @@
-# ManagerAI
+# PersonalOS
 
 A task management system designed for AI assistants with intelligent deduplication and MCP server integration.
 
