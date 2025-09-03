@@ -25,16 +25,26 @@ ManagerAI/
 └── config.yaml            # Your configuration (gitignored)
 ```
 
+## Requirements
+
+- Python 3.7 or later
+- pip package manager
+
 ## Quick Start
 
 ### For New Users
 
-1. **Use the setup script**:
+1. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Run the setup script**:
    ```bash
    python setup.py
    ```
 
-2. **Or manually setup**:
+3. **Or manually setup**:
    ```bash
    # Create personal directories
    mkdir Tasks CRM
@@ -48,12 +58,12 @@ ManagerAI/
    touch BACKLOG.md
    ```
 
-3. **Start the MCP server**:
+4. **Start the MCP server**:
    ```bash
    python core/mcp/server.py
    ```
 
-4. **Tell your AI assistant**:
+5. **Tell your AI assistant**:
    ```
    "Read CLAUDE.md for task management instructions"
    ```

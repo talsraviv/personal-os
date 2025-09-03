@@ -34,7 +34,7 @@ When user mentions "backlog", "process backlog", "triage", or provides unstructu
 title: [Clear, actionable task name]
 category: [see categories section]
 priority: [P0|P1|P2|P3]
-status: [n|s|b|d]
+status: [todo|active|blocked|done]
 estimated_time: [minutes as integer]
 created_date: [YYYY-MM-DD]
 ---
@@ -71,10 +71,10 @@ Default categories - modify based on your workflow:
 
 ## Status Codes
 
-- **n**: Not started (default)
-- **s**: Started/in-progress
-- **b**: Blocked
-- **d**: Done (auto-cleaned after 30 days)
+- **todo**: Not started (default)
+- **active**: Currently working on (limit: 1-3)
+- **blocked**: Waiting on something/someone
+- **done**: Completed (auto-cleaned after 30 days)
 
 ## Task Management Commands
 
