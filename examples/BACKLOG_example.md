@@ -1,31 +1,25 @@
-# Backlog Example
+# PM Demo Backlog
 
-This shows what a typical BACKLOG.md might look like before processing:
+## PM's Brain Dump - End of Week
 
----
-
-Call John about the partnership proposal
-need to review those API docs from last week
-Fix the login bug that Sarah reported - urgent!
-prepare for board meeting next Tuesday
-  - financial review
-  - product roadmap update  
-  - hiring plan
-Research competitors pricing models
-Reach out to that investor I met at the conference - Tom something from Sequoia?
-Write blog post about our new feature launch
-Update LinkedIn profile
-Book flights for NYC trip
-Follow up with customers from the webinar
-Plan team offsite
-look into why the dashboard is slow
-Send thank you note to conference organizers
+Deep research: analyze how Slack, Linear, and Asana handle API rate limiting and developer experience - need comprehensive report for our API v2 strategy
+Draft launch announcement copy for new AI assistant feature - needs blog post, email campaign, and in-app messaging copy by next week
+Customer interview with Spotify team about API integration needs - super important!!
+Write release notes for v2.3.4 before Thursday deploy
+DAU dropped 5% last week - need to investigate why
+Review PRD for new onboarding flow with design team
+Sprint planning for next week - need to groom backlog first
+Follow up on A/B test results from growth team about checkout flow
+CEO just slacked about strategic pivot - need to assess roadmap impact
+Customer complained on Twitter about mobile app crashes
+Notion just shipped something similar to our Q2 roadmap item - need competitive analysis
+Post-mortem for last week's incident still needs to be written
 
 ---
 
 When you run "Process my backlog", the system will:
-1. Detect "Fix login bug" might duplicate existing bug tasks
-2. Ask for clarification on vague items like "that investor Tom"
-3. Create subtasks for board meeting items
-4. Auto-categorize (technical, outreach, writing, admin)
-5. Suggest priorities based on urgency and your goals
+1. Prioritize research and content generation tasks
+2. Detect urgent items like Thursday deploy and customer issues
+3. Create subtasks for complex items
+4. Auto-categorize (technical, outreach, research, writing, admin)
+5. Suggest priorities based on deadlines and strategic impact
