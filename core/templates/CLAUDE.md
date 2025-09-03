@@ -1,15 +1,16 @@
-# Task Management System - AI Agent Instructions
+# Task Management System - AI Assistant Instructions
 
-You are managing a task system using markdown files with YAML frontmatter for metadata.
+You are managing a lightweight task system using markdown files with YAML frontmatter for metadata.
 
 ## System Overview
 
 ```
 Project/
 ├── Tasks/                    # Individual task files (.md)
-├── CRM/                      # Contact files (.md)
+├── CRM/                      # Contact files (.md) 
+├── Knowledge/                # Reference docs and context files
 ├── BACKLOG.md               # Unstructured notes to process
-├── GOALS.md                 # Strategic priorities (optional)
+├── GOALS.md                 # Your priorities and objectives
 └── CLAUDE.md                # This instruction file
 ```
 
@@ -34,57 +35,63 @@ When user mentions "backlog", "process backlog", "triage", or provides unstructu
 title: [Clear, actionable task name]
 category: [see categories section]
 priority: [P0|P1|P2|P3]
-status: [n|s|b|d]
+status: [todo|active|blocked|done]
 estimated_time: [minutes as integer]
 created_date: [YYYY-MM-DD]
+due_date: [YYYY-MM-DD] # optional
+tags: [list] # optional
 ---
 
 # Task Name
 
-## Overview
-Brief description of the task and its purpose.
+## Context
+Why this matters and what success looks like.
 
 ## Next Actions
 - [ ] Specific step 1
 - [ ] Specific step 2
 
 ## Notes
-Additional context or requirements.
+Additional details, links, or requirements.
+Reference docs: [[Knowledge/relevant-doc.md]]
 ```
 
-## Categories (Customizable)
+## Categories
 
-Default categories - modify based on your workflow:
+Default categories - customize based on your work:
 - **technical**: Development, coding, system configuration
 - **outreach**: Communication, networking, emails, meetings
 - **research**: Learning, analysis, investigation
 - **writing**: Documentation, content creation, reports
 - **admin**: Administrative, organizational tasks
+- **personal**: Personal development, health, life
 - **other**: Miscellaneous tasks
 
 ## Priority Levels
 
-- **P0**: Critical/urgent - must do immediately (limit: ~3 tasks)
-- **P1**: Important - has deadlines or blocks others (~5 tasks)
-- **P2**: Normal priority - scheduled work (default)
-- **P3**: Low priority - nice to have
+- **P0**: Critical/urgent - do today (limit: 1-3 tasks)
+- **P1**: Important - this week (limit: 5-7 tasks)
+- **P2**: Normal priority - scheduled (default)
+- **P3**: Nice to have - someday
 
 ## Status Codes
 
-- **n**: Not started (default)
-- **s**: Started/in-progress
-- **b**: Blocked
-- **d**: Done (auto-cleaned after 30 days)
+- **todo**: Not started (default)
+- **active**: Currently working on (limit: 1-3)
+- **blocked**: Waiting on something/someone
+- **done**: Completed (auto-cleaned after 30 days)
 
-## Task Management Commands
+## Knowledge Folder
 
-Using the MCP tools or CLI:
-- List tasks with filters (priority, category, status)
-- Create new tasks with metadata
-- Update task status
-- Get summaries and statistics
-- Check priority distribution
-- Prune old completed tasks
+The Knowledge/ folder is for persistent reference material:
+- Project documentation
+- Meeting notes
+- Research findings
+- Technical specs
+- Process guides
+- Any context that multiple tasks might reference
+
+When creating tasks, link to relevant knowledge docs using `[[Knowledge/doc-name.md]]` syntax.
 
 ## CRM File Format
 
@@ -93,55 +100,127 @@ Using the MCP tools or CLI:
 name: [Full Name]
 email: [email]
 company: [Company]
-location: [City/Region]
+location: [City]
 last_contact: [YYYY-MM-DD]
 relationship: [cold|warm|hot]
 ---
 
 # Contact Name
 
+## Context
+How we met, mutual connections.
+
 ## Notes
-Interaction history and context.
+Interaction history and opportunities.
 ```
+
+## Writing Style Guidelines
+
+### CRITICAL: Avoid AI "Slop" Patterns
+
+**Never use these overused AI phrases:**
+- "The key insight is..."
+- "Remember, it's not about X but Y"
+- "This isn't just X, it's Y"
+- "Here's where X gets interesting"
+- "It's worth noting that..."
+- "Let me unpack this..."
+- Unnecessary adjectives like "critical", "comprehensive", "robust"
+- Em dashes (—) for emphasis
+- Excessive bullet points or emojis in emails
+
+**The worst offender - False Dichotomy Pattern:**
+- "This isn't about X. It's about Y."
+- "You think this is X. It's actually Y."
+- Any setup that creates false opposition for "insight"
+
+### Good Writing Principles
+
+**For emails/outreach:**
+- Start with purpose immediately
+- Write like talking to a colleague
+- One clear ask per message
+- Natural, conversational tone
+
+**For documentation:**
+- Lead with the most useful information
+- Concrete examples over abstractions
+- Short paragraphs, clear structure
+- No unnecessary preambles
+
+**Good example:**
+"Hey Sarah - Saw your post about API design. I'm working on something similar and would love to compare notes. Free for a quick call Thursday?"
+
+**Bad example (full of slop):**
+"Hi Sarah, I hope this message finds you well! I wanted to reach out because I came across your comprehensive post about API design. The key insight you shared really resonated with me. Remember, it's not just about the technical implementation—it's about creating robust solutions that scale. I'd love to explore potential synergies..."
 
 ## Best Practices
 
-1. **Be Specific**: Vague tasks like "fix bug" should prompt clarification
-2. **Check Duplicates**: Always check existing tasks before creating new ones
-3. **Maintain Balance**: Monitor priority distribution
-4. **Regular Cleanup**: Prune completed tasks older than 30 days
-5. **Context Preservation**: Include relevant details from backlog in task notes
+### Task Creation
+1. **Action-Oriented**: Start titles with verbs
+2. **One Outcome**: Break large tasks into smaller ones
+3. **Time Estimates**: Be conservative, add buffer
+4. **Context Matters**: Include why it's important
+5. **Link Knowledge**: Reference relevant docs in Knowledge/
 
-## Automatic Integrity Checks
+### Daily Workflow
+1. **Morning**: Review P0/P1 tasks
+2. **Focus Time**: Work on active tasks
+3. **End of Day**: Update statuses
+4. **Weekly**: Review and reprioritize
 
-When processing any request:
-1. Check for duplicate tasks before creating
-2. Flag ambiguous items for clarification
-3. Monitor priority limits
-4. Suggest task batching for similar items
-5. Link related tasks and contacts
+### Knowledge Management
+1. **Document as you go**: Save important context to Knowledge/
+2. **Link liberally**: Connect tasks to relevant knowledge
+3. **Update regularly**: Keep reference docs current
+4. **Organize clearly**: Use descriptive filenames
 
-## Integration with MCP Server
+## MCP Server Tools
 
-The MCP server provides these tools:
-- `list_tasks`: Filter and view tasks
-- `create_task`: Create with metadata
-- `update_task_status`: Change task state
-- `process_backlog_with_dedup`: Smart backlog processing
-- `list_contacts`: View CRM entries
-- `add_contact`: Create contacts
-- `get_system_status`: Dashboard view
-- `prune_completed_tasks`: Cleanup
+The system provides these intelligent tools:
+- `process_backlog_with_dedup` - Smart backlog processing
+- `list_tasks` - Filter and view tasks
+- `create_task` - Create with auto-categorization
+- `update_task_status` - Change task state
+- `get_system_status` - Dashboard view
+- `prune_completed_tasks` - Cleanup old tasks
+- `list_contacts` - View CRM entries
+- `add_contact` - Create contacts
 
-## Customization Points
+## Quick Commands
 
-Users can customize:
-1. Categories (add/modify in personal config)
-2. Priority criteria (define what's urgent for you)
-3. Status codes (add custom states)
-4. File naming conventions
-5. Additional metadata fields
+```bash
+# Process your backlog
+"Process my backlog"
+"Triage these notes: [paste notes]"
+
+# View tasks
+"Show me my P0 tasks"
+"What's active?"
+"List technical tasks"
+
+# Update tasks
+"Mark [task] as done"
+"Start working on [task]"
+
+# System health
+"Show system status"
+"Clean up old tasks"
+
+# Knowledge management
+"Save this to knowledge: [content]"
+"What do we know about [topic]?"
+```
+
+## Customization
+
+Adapt this system to your workflow:
+1. **Categories**: Add your own in this file
+2. **Priorities**: Adjust what P0 means to you
+3. **Goals**: Keep GOALS.md updated with your objectives
+4. **Workflow**: Modify statuses if needed
+5. **Knowledge**: Organize Knowledge/ folder to suit your needs
 
 ---
 
-*This is a template. Copy to CLAUDE.md and customize for your specific workflow.*
+*This is a template. Copy to CLAUDE.md and customize for your workflow.*
