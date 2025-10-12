@@ -4,16 +4,18 @@ category: technical
 priority: P2
 status: n
 estimated_time: 60
+resource_refs:
+  - Knowledge/example-brief.md
 ---
 
 # Example Task
 
-## Overview
-This is an example task to show the structure.
+## Context
+This supports the "Audience growth" goal defined in GOALS.md and uses the brief in Knowledge/example-brief.md.
 
 ## Next Actions
 - [ ] First step
 - [ ] Second step
 
-## Notes
-Add any additional context here.
+## Progress Log
+- 2024-10-12: Created example task template.

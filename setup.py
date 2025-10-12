@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Setup script for ManagerAI Task Management System
+Setup script for Personal OS task management starter
 Creates necessary directories and copies template files
 """
 
@@ -10,7 +10,7 @@ from pathlib import Path
 
 def setup():
     """Setup the task management system"""
-    print("🚀 Setting up ManagerAI Task Management System...")
+    print("🚀 Setting up Personal OS Task Management System...")
     
     base_dir = Path.cwd()
     
@@ -90,7 +90,7 @@ def setup():
     # Create BACKLOG.md if it doesn't exist
     backlog_path = base_dir / 'BACKLOG.md'
     if not backlog_path.exists():
-        backlog_path.write_text("# Backlog\n\nAdd your unstructured notes here:\n\n")
+        backlog_path.write_text("# Backlog\n\nDrop raw notes or todos here. Say `clear my backlog` when you're ready for triage.\n")
         print("✅ Created: BACKLOG.md")
     else:
         print("📁 File exists: BACKLOG.md")
@@ -159,19 +159,21 @@ category: technical
 priority: P2
 status: n
 estimated_time: 60
+resource_refs:
+  - Knowledge/example-brief.md
 ---
 
 # Example Task
 
-## Overview
-This is an example task to show the structure.
+## Context
+This supports the "Audience growth" goal and references Knowledge/example-brief.md.
 
 ## Next Actions
 - [ ] First step
 - [ ] Second step
 
-## Notes
-Add any additional context here.
+## Progress Log
+- 2024-10-12: Created example task template.
 """)
         print("✅ Created: examples/example_task.md")
     

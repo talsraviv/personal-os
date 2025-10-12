@@ -68,6 +68,15 @@ ManagerAI/
    "Read CLAUDE.md for task management instructions"
    ```
 
+## How Should You Use This?
+
+1. Run `python setup.py` the first time—answer the short onboarding interview so `GOALS.md` reflects what matters to you.
+2. Whenever ideas pop up, drop them straight into `BACKLOG.md`; stash any supporting docs in `Knowledge/`.
+3. In Claude Code or Droid CLI, say “clear my backlog” to have the assistant turn those notes into structured tasks and clear the inbox.
+4. Ask for guidance during the day (“What should I work on today?”, “What’s blocked?”) and follow the task files it creates under `Tasks/`.
+5. Keep task status letters up to date (`n/s/b/d`) so the assistant can track progress and suggest the next focus items.
+6. Review `GOALS.md` weekly and prune or reprioritize tasks to stay aligned with your objectives.
+
 ## What's What
 
 ### Core System (`core/`)
